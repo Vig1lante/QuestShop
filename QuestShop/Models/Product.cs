@@ -8,7 +8,6 @@ namespace QuestShop.Models {
         public string Details { get; set; }
         public double Price { get; set; }
         public bool Stock { get; set; }
-        public int OrderId { get; set; }
         public IList<Order> Order { get; set; }
     }
 }   

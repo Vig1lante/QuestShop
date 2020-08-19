@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QuestShop.Data;
+using QuestShop.Models;
 
 [assembly: HostingStartup(typeof(QuestShop.Areas.Identity.IdentityHostingStartup))]
 namespace QuestShop.Areas.Identity

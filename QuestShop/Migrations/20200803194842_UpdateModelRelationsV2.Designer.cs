@@ -10,8 +10,8 @@ using QuestShop.Data;
 namespace QuestShop.Migrations
 {
     [DbContext(typeof(QuestShopDbContext))]
-    [Migration("20200724162242_Initial")]
-    partial class Initial
+    [Migration("20200803194842_UpdateModelRelationsV2")]
+    partial class UpdateModelRelationsV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -237,20 +237,17 @@ namespace QuestShop.Migrations
                     b.Property<DateTime>("ProceesedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -267,9 +264,6 @@ namespace QuestShop.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -322,19 +316,7 @@ namespace QuestShop.Migrations
                     b.Property<double>("PointsShare")
                         .HasColumnType("float");
 
-                    b.Property<int>("UserQuestId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserQuestQuestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserQuestUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserQuestUserId", "UserQuestQuestId");
 
                     b.ToTable("TeamQuest");
                 });
@@ -350,9 +332,14 @@ namespace QuestShop.Migrations
                     b.Property<DateTime>("CompletionDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("TeamQuestId")
+                        .HasColumnType("int");
+
                     b.HasKey("UserId", "QuestId");
 
                     b.HasIndex("QuestId");
+
+                    b.HasIndex("TeamQuestId");
 
                     b.ToTable("UsersQuests");
                 });
@@ -367,9 +354,6 @@ namespace QuestShop.Migrations
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TeamQuestId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -378,8 +362,6 @@ namespace QuestShop.Migrations
 
                     b.Property<double>("UserPoints")
                         .HasColumnType("float");
-
-                    b.HasIndex("TeamQuestId");
 
                     b.HasDiscriminator().HasValue("AppUser");
                 });
@@ -439,20 +421,13 @@ namespace QuestShop.Migrations
                 {
                     b.HasOne("QuestShop.Models.Product", "Product")
                         .WithMany("Order")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("QuestShop.Models.AppUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId1");
-                });
-
-            modelBuilder.Entity("QuestShop.Models.TeamQuest", b =>
-                {
-                    b.HasOne("QuestShop.Models.UserQuest", null)
-                        .WithMany("TeamQuest")
-                        .HasForeignKey("UserQuestUserId", "UserQuestQuestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("QuestShop.Models.UserQuest", b =>
@@ -463,18 +438,15 @@ namespace QuestShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("QuestShop.Models.TeamQuest", "TeamQuest")
+                        .WithMany("UserQuests")
+                        .HasForeignKey("TeamQuestId");
+
                     b.HasOne("QuestShop.Models.AppUser", "User")
                         .WithMany("Quests")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("QuestShop.Models.AppUser", b =>
-                {
-                    b.HasOne("QuestShop.Models.TeamQuest", null)
-                        .WithMany("Users")
-                        .HasForeignKey("TeamQuestId");
                 });
 #pragma warning restore 612, 618
         }

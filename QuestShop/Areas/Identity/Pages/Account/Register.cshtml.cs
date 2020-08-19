@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -7,14 +14,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using QuestShop.Models;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
-namespace QuestShop.Areas.Identity.Pages.Account {
+namespace QuestShop.Areas.Identity.Pages.Account
+{
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -50,18 +52,6 @@ namespace QuestShop.Areas.Identity.Pages.Account {
             public string Email { get; set; }
 
             [Required]
-            [Display(Name = "Name")]
-            public string Name { get; set; }
-
-
-            [Required]
-            [Display(Name = "Surname")]
-            public string Surname { get; set; }
-
-            [Display(Name = "Phone nmber")]
-            public string PhoneNumber { get; set; }
-
-            [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -85,7 +75,7 @@ namespace QuestShop.Areas.Identity.Pages.Account {
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = Input.Name, Email = Input.Email, Surname = Input.Surname, PhoneNumber = Input.PhoneNumber };
+                var user = new AppUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

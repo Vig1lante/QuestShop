@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using QuestShop.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 
-namespace QuestShop.Areas.Identity.Pages.Account.Manage {
+namespace QuestShop.Areas.Identity.Pages.Account.Manage
+{
     public partial class IndexModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;
@@ -40,7 +44,6 @@ namespace QuestShop.Areas.Identity.Pages.Account.Manage {
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
-
 
             Input = new InputModel
             {

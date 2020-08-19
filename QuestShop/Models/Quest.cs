@@ -11,7 +11,6 @@ namespace QuestShop.Models {
         public DateTime CompletionDate { get; set; }
         public bool Stock { get; set; }
         public IList<UserQuest> Users { get; set; }
-
-
+         
     }
 }
