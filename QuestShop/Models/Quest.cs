@@ -10,6 +10,8 @@ namespace QuestShop.Models {
         public double Points { get; set; }
         public DateTime CompletionDate { get; set; }
         public bool Stock { get; set; }
+
+        public bool QuestOfTheWeek { get; set; }
         public IList<UserQuest> Users { get; set; }
          
     }

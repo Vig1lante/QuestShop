@@ -302,6 +302,9 @@ namespace QuestShop.Migrations
                     b.Property<double>("Points")
                         .HasColumnType("float");
 
+                    b.Property<bool>("QuestOfTheWeek")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("Stock")
                         .HasColumnType("bit");
 
