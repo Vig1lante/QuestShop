@@ -26,7 +26,7 @@ namespace QuestShop
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<QuestShopDbContext>();
-            services.AddScoped<IQuestRepository, QuestRepository>();
+            services.AddScoped<ICrudRepository<Quest>, CrudRepository<Quest>>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
