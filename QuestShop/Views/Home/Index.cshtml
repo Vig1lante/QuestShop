@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QuestShop.Models.Quest>
+﻿@model HomeViewModel
 
 @{
     ViewData["Title"] = "Quest Shop";
@@ -9,25 +9,25 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <table class="table">
-    <thead>
+    @*<thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Details)
+                @Html.DisplayNameFor(model => model.Quests.Select(n => n.Details))
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Points)
+                @Html.DisplayNameFor(model => model.Quests.Select(n => n.Points))
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompletionDate)
+                @Html.DisplayNameFor(model => model.Quests.Select(n => n.CompletionDate))
             </th>
             <th></th>
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Quests)
         {
             <tr>
                 <td>

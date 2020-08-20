@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using QuestShop.Data;
 using QuestShop.Models;
+using QuestShop.ViewModels;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -22,8 +23,12 @@ namespace QuestShop.Controllers {
             _questShopDbContext = questShopDbContext;
         }
 
-        public IActionResult Index() {
-            return View((IEnumerable<Quest>)_questRepository.GetAll());
+        public async Task<IActionResult> Index() {
+            var homeViewModel = new HomeViewModel()
+            {
+                Quests = await _questRepository.GetAll()
+            };
+            return View(homeViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
