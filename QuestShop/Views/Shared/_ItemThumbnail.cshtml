@@ -5,13 +5,13 @@
         <div class="caption">
             @foreach (var item in Model)
             {
-                <h3 class="pull-right">@item.Name</h3>
-                <h3>
+                <h5 class="pull-right">@item.Name</h5>
+                <h5>
                     <a asp-controller="Home"
                        asp-action="Index">
-                        Dupa
+                        Details
                     </a>
-                </h3>
+                </h5>
                 <p>@item.Details</p>
             }
         </div>

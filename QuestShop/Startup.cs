@@ -28,7 +28,7 @@ namespace QuestShop
                 .AddEntityFrameworkStores<QuestShopDbContext>();
             services.AddScoped<ICrudRepository<Quest>, CrudRepository<Quest>>();
             services.AddScoped<ICrudRepository<Product>, CrudRepository<Product>>();
-
+            services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
