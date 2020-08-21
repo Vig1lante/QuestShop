@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuestShop.Data;
 using System;
@@ -14,14 +15,21 @@ namespace QuestShop.Models
         private readonly QuestShopDbContext _questShopDbContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly string _currentUserId;
-        public AppUser LoggedInUser { get; }
-       
-        public double UserPoints
+        public AppUser LoggedInUser
         {
-            get {return UserPoints;}
+            get { return LoggedInUser; }
             set
             {
-                UserPoints = _questShopDbContext.Users.FirstOrDefault(s => s.Id == _currentUserId).UserPoints;
+                GetAppUser();
+            }
+        }
+
+        public double UserPoints
+        {
+            get { return UserPoints; }
+            set
+            {
+                UserPoints = LoggedInUser.UserPoints;
             }
         }
         public StudentRepository(QuestShopDbContext questShopDbContext, IHttpContextAccessor httpContextAccessor)
@@ -31,5 +39,9 @@ namespace QuestShop.Models
             _currentUserId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier); //Set current user guid to field
         }
 
+        private async void GetAppUser()
+        {
+            LoggedInUser =  await _questShopDbContext.Users.FirstOrDefaultAsync(s => s.Id == _currentUserId);
+        }
     }
 }
