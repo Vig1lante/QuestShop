@@ -1,0 +1,20 @@
+﻿@model IEnumerable<IItemThumbnail>
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <div class="caption">
+            @foreach (var item in Model)
+            {
+                <h3 class="pull-right">@item.Name</h3>
+                <h3>
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Dupa
+                    </a>
+                </h3>
+                <p>@item.Details</p>
+            }
+        </div>
+    </div>
+</div>
+

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 
 namespace QuestShop.Models {
-    public class Quest {
-
+    public class Quest : IItemThumbnail
+    {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
@@ -13,6 +13,5 @@ namespace QuestShop.Models {
 
         public bool QuestOfTheWeek { get; set; }
         public IList<UserQuest> Users { get; set; }
-         
     }
 }

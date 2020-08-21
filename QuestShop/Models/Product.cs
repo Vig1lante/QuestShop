@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace QuestShop.Models {
-    public class Product {
+    public class Product: IItemThumbnail {
 
         public int Id { get; set; }
         public string Name { get; set; }

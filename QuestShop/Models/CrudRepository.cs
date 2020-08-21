@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
 using QuestShop.Data;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace QuestShop.Models
         {
             return await _questShopDbContext.Set<T>().FindAsync(id);
         }
+
 
         public Task Remove(T entity)
         {

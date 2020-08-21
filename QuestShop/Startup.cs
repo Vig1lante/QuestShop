@@ -27,6 +27,8 @@ namespace QuestShop
             services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<QuestShopDbContext>();
             services.AddScoped<ICrudRepository<Quest>, CrudRepository<Quest>>();
+            services.AddScoped<ICrudRepository<Product>, CrudRepository<Product>>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
