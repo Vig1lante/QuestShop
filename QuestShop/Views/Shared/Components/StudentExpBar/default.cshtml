@@ -1,0 +1,13 @@
+﻿@model StudentViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<a class="nav-link text-dark"
+    <span>
+        <b>User exp:</b> @Model.UserPoints
+        <b>User rank:</b> @Model.UserRank
+        <b>User type:</b> @Model.UserType
+    </span>
+</a>

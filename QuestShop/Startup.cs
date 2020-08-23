@@ -24,7 +24,7 @@ namespace QuestShop
             services.AddDbContext<QuestShopDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<QuestShopDbContext>();
             services.AddScoped<ICrudRepository<Quest>, CrudRepository<Quest>>();
             services.AddScoped<ICrudRepository<Product>, CrudRepository<Product>>();
@@ -32,6 +32,8 @@ namespace QuestShop
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

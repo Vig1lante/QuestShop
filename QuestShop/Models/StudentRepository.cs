@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuestShop.Data;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,35 +10,46 @@ namespace QuestShop.Models
     public class StudentRepository : IStudentRepository
     {
         private readonly QuestShopDbContext _questShopDbContext;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly string _currentUserId;
+        private readonly string _currentUserName;
         public AppUser LoggedInUser
         {
-            get { return LoggedInUser; }
-            set
+            get
             {
-                GetAppUser();
+                return GetAppUser();
             }
+
         }
 
         public double UserPoints
         {
-            get { return UserPoints; }
+            get { return LoggedInUser.UserPoints; }
             set
             {
-                UserPoints = LoggedInUser.UserPoints;
+                UserPoints = value;
             }
         }
+
+        public ModelEnums.UserRank UserRank
+        {
+            get { return LoggedInUser.Rank; }
+            set { UserRank = value; }
+        }
+        public ModelEnums.UserType UserType
+        {
+            get { return LoggedInUser.Type;  }
+            set { UserType = value; }
+        }
+
         public StudentRepository(QuestShopDbContext questShopDbContext, IHttpContextAccessor httpContextAccessor)
         {
             _questShopDbContext = questShopDbContext;
-            _httpContextAccessor = httpContextAccessor;
-            _currentUserId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier); //Set current user guid to field
+            _currentUserName = httpContextAccessor.HttpContext.User.Identity.Name; //Set current user guid to field
+            
         }
 
-        private async void GetAppUser()
+        private AppUser GetAppUser()
         {
-            LoggedInUser =  await _questShopDbContext.Users.FirstOrDefaultAsync(s => s.Id == _currentUserId);
+            return _questShopDbContext.Users.FirstOrDefault(s => s.Email == _currentUserName);
         }
     }
 }
