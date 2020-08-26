@@ -4,7 +4,6 @@ using static QuestShop.Models.ModelEnums;
 
 namespace QuestShop.Models {
     public class AppUser: IdentityUser {
-        public UserType Type { get; set; }
         public UserRank Rank { get; set; }
         public string Surname { get; set; }
         public string UserGroup { get; set; }

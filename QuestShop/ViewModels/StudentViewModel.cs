@@ -1,4 +1,5 @@
-﻿using QuestShop.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using QuestShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace QuestShop.ViewModels
         public AppUser LoggedInUser { get; set; }
         public double UserPoints { get; set; }
         public ModelEnums.UserRank UserRank { get; set; }
-        public ModelEnums.UserType UserType { get; set; }
+        public string UserRole { get; set; }
     }
 }

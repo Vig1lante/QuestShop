@@ -8,6 +8,10 @@
     <span>
         <b>User exp:</b> @Model.UserPoints
         <b>User rank:</b> @Model.UserRank
-        <b>User type:</b> @Model.UserType
+    @if (Model.UserRole != null)
+    {
+
+        <b>User type:</b> @Model.UserRole
+    }
     </span>
 </a>

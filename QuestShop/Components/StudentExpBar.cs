@@ -26,7 +26,7 @@ namespace QuestShop.Components
                 LoggedInUser = _studentRepository.LoggedInUser,
                 UserPoints = _studentRepository.UserPoints,
                 UserRank = _studentRepository.UserRank,
-                UserType = _studentRepository.UserType
+                UserRole = _studentRepository.UserRole
             };
             return View(studentViewModel);
 

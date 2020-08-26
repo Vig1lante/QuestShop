@@ -10,8 +10,8 @@ using QuestShop.Data;
 namespace QuestShop.Migrations
 {
     [DbContext(typeof(QuestShopDbContext))]
-    [Migration("20200820155826_Inital")]
-    partial class Inital
+    [Migration("20200826180953_FixedStudentRepositoryForRole")]
+    partial class FixedStudentRepositoryForRole
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -209,9 +209,6 @@ namespace QuestShop.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserGroup")
                         .HasColumnType("nvarchar(max)");

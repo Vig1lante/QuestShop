@@ -12,7 +12,6 @@ namespace QuestShop.Data
         public DbSet<UserQuest> UsersQuests { get; set; }
         public QuestShopDbContext(DbContextOptions<QuestShopDbContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
