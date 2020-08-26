@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Identity.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private RoleManager<IdentityRole> roleManager;
@@ -44,8 +44,14 @@ namespace Identity.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);
-            if (role != null && role.Name != "Admin")
+            if (role != null)
             {
+                if (role.Name == "Admin")
+                {
+                    ModelState.AddModelError("", "Can't delete Admin group, silly");
+                    return View("Index", roleManager.Roles);
+
+                }
                 IdentityResult result = await roleManager.DeleteAsync(role);
                 if (result.Succeeded)
                     return RedirectToAction("Index");
@@ -99,8 +105,15 @@ namespace Identity.Controllers
                 foreach (string userId in model.DeleteIds ?? new string[] { })
                 {
                     AppUser user = await userManager.FindByIdAsync(userId);
-                    if (user != null && model.RoleName != "Admin")
+
+                    if (user != null)
                     {
+                        if (model.RoleName == "Admin")
+                        {
+                            ModelState.AddModelError("", "Cannot delete admin role, sorry! :) ");
+                            RedirectToAction("Index");
+                            break;
+                        }
                         result = await userManager.RemoveFromRoleAsync(user, model.RoleName);
                         if (!result.Succeeded)
                             Errors(result);

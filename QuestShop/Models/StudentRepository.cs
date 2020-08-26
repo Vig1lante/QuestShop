@@ -14,6 +14,7 @@ namespace QuestShop.Models
         private readonly QuestShopDbContext _questShopDbContext;
         private readonly UserManager<AppUser> userManager;
         private readonly string _currentUserName;
+
         public AppUser LoggedInUser
         {
             get
