@@ -64,12 +64,14 @@ namespace QuestShop.Models
         {
             try
             {
-                return _questShopDbContext.Roles.FirstOrDefault(p => p.Id == _questShopDbContext.UserRoles.FirstOrDefault(p => p.UserId == LoggedInUser.Id).RoleId).Name;
+                var roleId = _questShopDbContext.UserRoles.FirstOrDefault(p => p.UserId == LoggedInUser.Id);
+                return _questShopDbContext.Roles.FirstOrDefault(p => p.Id == roleId.RoleId).Name;
 
             }
             catch (InvalidOperationException ex)
             {
-                await userManager.AddToRoleAsync(LoggedInUser, "User");
+                await userManager.AddToRoleAsync(LoggedInUser, "Admin");
+                await _questShopDbContext.SaveChangesAsync();
             }
 
             return _questShopDbContext.Roles.FirstOrDefault(p => p.Id == _questShopDbContext.UserRoles.FirstOrDefault(p => p.UserId == LoggedInUser.Id).RoleId).Name;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QuestShop.Models;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Identity.Controllers
 {
+    [Authorize(Roles = "User")]
     public class RoleController : Controller
     {
         private RoleManager<IdentityRole> roleManager;
@@ -42,7 +44,7 @@ namespace Identity.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);
-            if (role != null && role.Name != "User")
+            if (role != null && role.Name != "Admin")
             {
                 IdentityResult result = await roleManager.DeleteAsync(role);
                 if (result.Succeeded)
@@ -97,7 +99,7 @@ namespace Identity.Controllers
                 foreach (string userId in model.DeleteIds ?? new string[] { })
                 {
                     AppUser user = await userManager.FindByIdAsync(userId);
-                    if (user != null)
+                    if (user != null && model.RoleName != "Admin")
                     {
                         result = await userManager.RemoveFromRoleAsync(user, model.RoleName);
                         if (!result.Succeeded)
