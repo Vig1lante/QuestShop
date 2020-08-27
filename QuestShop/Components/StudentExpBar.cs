@@ -21,7 +21,7 @@ namespace QuestShop.Components
 
         public IViewComponentResult Invoke()
         {
-            var studentViewModel = new StudentViewModel()
+            var studentViewModel = new CurrentUserViewModel()
             {
                 LoggedInUser = _studentRepository.LoggedInUser,
                 UserPoints = _studentRepository.UserPoints,

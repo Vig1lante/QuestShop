@@ -10,5 +10,6 @@ namespace QuestShop.Models {
         public double UserPoints { get; set; }
         public IList<UserQuest> Quests { get; set; }
         public IList<Order> Orders { get; set; }
+
     }
 }

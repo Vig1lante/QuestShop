@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AppUser>
+
+ 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Role</th>
+            <th scope="col">Quests</th>
+            <th scope="col">Orders</th>
+            <th scope="col">Orders</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <th scope="row">@user.Email</th>
+            </tr>
+            <tr>
+                <th scope="row">@user.Orders</th>
+            </tr>
+            @*<tr>
+                <th scope="row">@user.UserRoles.First()</th>
+            </tr>*@
+            <tr>
+                <th scope="row">@user.Quests</th>
+            </tr>
+        }
+
+    </tbody>
+</table>

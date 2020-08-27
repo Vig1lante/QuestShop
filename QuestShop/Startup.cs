@@ -27,8 +27,12 @@ namespace QuestShop
                     Configuration.GetConnectionString("DefaultConnection")) );
             services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<QuestShopDbContext>();
+            //services.AddIdentity<AppUser, ApplicationRole>(options => options.Stores.MaxLengthForKeys = 128)
+            //.AddEntityFrameworkStores<QuestShopDbContext>()
+            //.AddDefaultTokenProviders();
             services.AddScoped<ICrudRepository<Quest>, CrudRepository<Quest>>();
             services.AddScoped<ICrudRepository<Product>, CrudRepository<Product>>();
+            services.AddScoped<ICrudRepository<AppUser>, CrudRepository<AppUser>>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();

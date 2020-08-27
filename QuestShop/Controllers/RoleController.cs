@@ -12,8 +12,8 @@ namespace Identity.Controllers
     [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
-        private RoleManager<IdentityRole> roleManager;
-        private UserManager<AppUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<AppUser> userManager;
         public RoleController(RoleManager<IdentityRole> roleMgr, UserManager<AppUser> userMgr)
         {
             roleManager = roleMgr;
