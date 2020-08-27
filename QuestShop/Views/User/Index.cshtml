@@ -2,13 +2,12 @@
 
  
 
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
             <th scope="col">User</th>
             <th scope="col">Role</th>
             <th scope="col">Quests</th>
-            <th scope="col">Orders</th>
             <th scope="col">Orders</th>
         </tr>
     </thead>
@@ -17,15 +16,9 @@
         {
             <tr>
                 <th scope="row">@user.Email</th>
-            </tr>
-            <tr>
-                <th scope="row">@user.Orders</th>
-            </tr>
-            @*<tr>
-                <th scope="row">@user.UserRoles.First()</th>
-            </tr>*@
-            <tr>
-                <th scope="row">@user.Quests</th>
+                <td>@user.Orders</td>
+                <td>@user.Quests</td>
+                <td>@user.UserPoints</td>
             </tr>
         }
 
