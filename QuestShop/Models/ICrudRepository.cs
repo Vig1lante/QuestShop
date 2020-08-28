@@ -12,5 +12,6 @@ namespace QuestShop.Models
         Task Remove(T entity);
         Task Update(T entity);   
         Task<T> GetById(int id);
+
     }
 }

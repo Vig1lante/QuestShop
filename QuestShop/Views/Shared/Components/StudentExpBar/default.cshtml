@@ -3,15 +3,17 @@
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
-
-<a class="nav-link text-dark"
+<a class="nav-link">
     <span>
-        <b>User exp:</b> @Model.UserPoints
-        <b>User rank:</b> @Model.UserRank
-    @if (Model.UserRole != null)
-    {
+        <span class="user-stats">User exp: </span>
+        <span class="user-details">@Model.UserPoints</span>
+        <span class="user-stats">User rank:  </span>
+        <span class="user-details">@Model.UserRank</span>
+        @if (Model.UserRole != null)
+        {
 
-        <b>User type:</b> @Model.UserRole
-    }
+            <span class="user-stats">User type:</span>
+            <span class="user-details"> @Model.UserRole</span>
+        }
     </span>
 </a>

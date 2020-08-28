@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using QuestShop.Data;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuestShop.Models
 {
@@ -58,5 +61,19 @@ namespace QuestShop.Models
 
         private string GetUserRoleId() => userManager.GetRolesAsync(LoggedInUser).Result.First();
 
+        public async Task<IDictionary<AppUser, string>> GetUsersWithRoles()
+        {
+            var dict = new Dictionary<AppUser, string>();
+            var appUsers = await userManager.Users.ToListAsync();
+
+
+            foreach (AppUser user in appUsers)
+            {
+                var roleKey = userManager.GetRolesAsync(user).Result.First();
+                dict.Add(user, roleKey);
+            }
+
+            return dict;
+        }
     }
 }

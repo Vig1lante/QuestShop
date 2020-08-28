@@ -1,24 +1,22 @@
-﻿@model IEnumerable<AppUser>
-
- 
-
-<table class="table table-striped">
-    <thead class="thead-dark">
+﻿<table class="table table-hover table-dark">
+    <thead>
         <tr>
             <th scope="col">User</th>
             <th scope="col">Role</th>
             <th scope="col">Quests</th>
             <th scope="col">Orders</th>
+            <th scope="col">Experience</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var keyValuePair in Model)
         {
             <tr>
-                <th scope="row">@user.Email</th>
-                <td>@user.Orders</td>
-                <td>@user.Quests</td>
-                <td>@user.UserPoints</td>
+                <th scope="row">@keyValuePair.Key.Email</th>
+                <td>@keyValuePair.Value</td>
+                <td>@keyValuePair.Key.Orders</td>
+                <td>@keyValuePair.Key.Quests</td>
+                <td>@keyValuePair.Key.UserPoints</td>
             </tr>
         }
 

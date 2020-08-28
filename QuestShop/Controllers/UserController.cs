@@ -16,20 +16,23 @@ namespace QuestShop.Controllers
     {
         private readonly QuestShopDbContext _questShopDbContext;
         private readonly UserManager<AppUser> _userManager;
-        private readonly ICrudRepository<AppUser> _userRepository;
+        private readonly IStudentRepository _userRepository;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         // GET: /<controller>/
 
-        public UserController(QuestShopDbContext questShopDbContext, UserManager<AppUser> userManager, ICrudRepository<AppUser> userRepository )
+        public UserController(QuestShopDbContext questShopDbContext, UserManager<AppUser> userManager, IStudentRepository userRepository, RoleManager<IdentityRole> roleManager )
         {
             _questShopDbContext = questShopDbContext;
             _userManager = userManager;
             _userRepository = userRepository;
+            this.roleManager = roleManager;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            return View(_userRepository.GetAll().Result);
+
+            return View(_userRepository.GetUsersWithRoles().Result);
         }
 
 
