@@ -52,7 +52,7 @@
                                                 </li>
                                             }
                                             <li><a asp-area="" asp-controller="#" asp-action="#">Gallery</a></li>
-                                            <li class="nav-item" style="padding-left:50px">
+                                            <li class="nav-item">
                                                 @if (User.Identity.IsAuthenticated)@await Component.InvokeAsync("StudentExpBar")
                                             </li>
                                             <li>
@@ -129,25 +129,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Instagram -->
-                        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Instagram Feed</h4>
-                                </div>
-                                <div class="instagram-gellay">
-                                    <ul class="insta-feed">
-                                        <li><a href="#"><img src="/img/gallery/instagram1.png" alt=""></a></li>
-                                        <li><a href="#"><img src="/img/gallery/instagram2.png" alt=""></a></li>
-                                        <li><a href="#"><img src="/img/gallery/instagram3.png" alt=""></a></li>
-                                        <li><a href="#"><img src="/img/gallery/instagram4.png" alt=""></a></li>
-                                        <li><a href="#"><img src="/img/gallery/instagram5.png" alt=""></a></li>
-                                        <li><a href="#"><img src="/img/gallery/instagram6.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        </div>        
                     </div>
                 </div>
                 <div class="footer-bottom">
