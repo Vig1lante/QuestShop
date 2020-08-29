@@ -4,7 +4,6 @@
     <title>@ViewData["Title"] - QuestShop</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Photography HTML-5 Template </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -34,7 +33,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="/img/logo/logo.png" alt=""></a>
+                                <a asp-controller="Home" asp-action="Index"><img src="/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -51,7 +50,8 @@
                                                     <a asp-area="" asp-controller="Role" asp-action="Index">Admin Panel</a>
                                                 </li>
                                             }
-                                            <li><a asp-area="" asp-controller="#" asp-action="#">Gallery</a></li>
+                                            <li><a asp-area="" asp-controller="#" asp-action="#">Store</a></li>
+                                            <li><a asp-area="" asp-controller="#" asp-action="#">Rewards</a></li>
                                             <li class="nav-item">
                                                 @if (User.Identity.IsAuthenticated)@await Component.InvokeAsync("StudentExpBar")
                                             </li>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Grabbing the concsumer’s attention isn’t enough you have to keep that attention for at least a.</p>
+                                        <p class="info1">Share your experience and provide your feedback!</p>
                                     </div>
                                 </div>
                             </div>
@@ -109,9 +109,8 @@
                                     <h4>Navigation</h4>
                                     <ul>
                                         <li><a href="#">Home</a></li>
-                                        <li><a href="#">Events</a></li>
-                                        <li><a href="#">Testimonial</a></li>
-                                        <li><a href="#">Categories</a></li>
+                                        <li><a href="#">Quests</a></li>
+                                        <li><a href="#">Rewards</a></li>
                                         <li><a href="#">Contacts</a></li>
                                     </ul>
                                 </div>
@@ -167,36 +166,36 @@
 
     <!-- JS here -->
 
-    <script src=".//js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src=".//js/vendor/jquery-1.12.4.min.js"></script>
-    <script src=".//js/popper.min.js"></script>
-    <script src=".//js/bootstrap.min.js"></script>
+    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src=".//js/jquery.slicknav.min.js"></script>
+    <script src="/js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src=".//js/owl.carousel.min.js"></script>
-    <script src=".//js/slick.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/slick.min.js"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script src=".//js/wow.min.js"></script>
-    <script src=".//js/animated.headline.js"></script>
-    <script src=".//js/jquery.magnific-popup.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/animated.headline.js"></script>
+    <script src="~/js/"></script>
 
     <!-- Nice-select, sticky -->
-    <script src=".//js/jquery.nice-select.min.js"></script>
-    <script src=".//js/jquery.sticky.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
 
     <!-- contact js -->
-    <script src=".//js/contact.js"></script>
-    <script src=".//js/jquery.form.js"></script>
-    <script src=".//js/jquery.validate.min.js"></script>
-    <script src=".//js/mail-script.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
     <script src=".//js/jquery.ajaxchimp.min.js"></script>
 
     <!-- Jquery Plugins, main Jquery -->
-    <script src=".//js/plugins.js"></script>
-    <script src=".//js/main.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
     @RenderSection("Scripts", required: false)
 
 </body>
