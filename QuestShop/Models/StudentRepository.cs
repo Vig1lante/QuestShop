@@ -59,7 +59,19 @@ namespace QuestShop.Models
             return _questShopDbContext.Users.FirstOrDefault(s => s.Email == _currentUserName);
         }
 
-        private string GetUserRoleId() => userManager.GetRolesAsync(LoggedInUser).Result.First();
+        private string GetUserRoleId()
+        {
+            var roleTemp = _questShopDbContext.UserRoles.AsEnumerable();
+            var result = _questShopDbContext.UserRoles.Where(s => s.UserId == LoggedInUser.Id).FirstOrDefault();
+            if (result == null)
+            {
+                return null;
+            }
+            else
+            {
+                return _questShopDbContext.Roles.FirstOrDefault(p => p.Id == result.RoleId).Name;
+            }
+        }
 
         public async Task<IDictionary<AppUser, string>> GetUsersWithRoles()
         {

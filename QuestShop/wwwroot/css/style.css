@@ -425,7 +425,7 @@ hr {
         top: 0;
         width: 101%;
         height: 101%;
-        background: #cd3be2;
+        background: #5635bb;
         z-index: 1;
         border-radius: 5px;
         transition: transform 0.5s;
@@ -2544,7 +2544,7 @@ hero-btn {
 }
 
     .header-area .main-header .main-menu ul li a {
-        color: #fff;
+        /*color: #fff;*/
         font-weight: 400;
         padding: 39px 10px;
         display: block;

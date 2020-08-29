@@ -4,20 +4,23 @@
 @inject UserManager<AppUser> UserManager
 
 
-@if (SignInManager.IsSignedIn(User))
+@if (!SignInManager.IsSignedIn(User))
 {
-    <li>
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
-    </li>
-    <li>
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+
+    <div class="header-right-btn f-right d-none d-lg-block ml-20">
+        <a class="btn header-btn" asp-area="Identity" asp-page="/Account/Login">Login</a>
+
+    </div>
 }
 else
 {
-    <li>
-        <a style="color:#53fdba;" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
+    <form method="post" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <div class="header-right-btn f-right d-none d-lg-block ml-20">
+
+            <button class="btn header-btn" style="background-color: mediumpurple; border-color:mediumpurple; padding: 15px 15px;">Logout</button>
+        </div>
+    </form>
+    <div class="header-right-btn f-right d-none d-lg-block ml-20">
+        <a class="btn header-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+    </div>
 }
