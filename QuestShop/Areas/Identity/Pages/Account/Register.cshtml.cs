@@ -22,16 +22,19 @@ namespace QuestShop.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<AppUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
@@ -76,7 +79,14 @@ namespace QuestShop.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new AppUser { UserName = Input.Email, Email = Input.Email};
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                var getThisUser = await _userManager.FindByIdAsync(user.Id);
+                if (getThisUser != null)
+                {
+                    var userResult = await _userManager.AddToRoleAsync(getThisUser, "Unassigned");
+                }
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

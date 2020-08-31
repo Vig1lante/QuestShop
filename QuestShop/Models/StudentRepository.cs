@@ -81,7 +81,7 @@ namespace QuestShop.Models
 
             foreach (AppUser user in appUsers)
             {
-                var roleKey = userManager.GetRolesAsync(user).Result.First();
+                var roleKey = userManager.GetRolesAsync(user).Result.FirstOrDefault();
                 dict.Add(user, roleKey);
             }
 

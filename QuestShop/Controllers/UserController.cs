@@ -28,7 +28,7 @@ namespace QuestShop.Controllers
             _userRepository = userRepository;
             this.roleManager = roleManager;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
 
 
