@@ -69,7 +69,7 @@
                                         </ul>
                                     </nav>
                                 </div>
-                   
+
                                 <partial name="_LoginPartial" />
 
                             </div>
@@ -85,10 +85,9 @@
         </div>
         <!-- Header End -->
     </header>
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @RenderSection("Home",required: false)
+    <div class="container">
+        @RenderBody()
     </div>
     <footer>
         <!--? Footer Start-->
