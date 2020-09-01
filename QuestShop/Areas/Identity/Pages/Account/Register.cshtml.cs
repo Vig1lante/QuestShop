@@ -80,7 +80,7 @@ namespace QuestShop.Areas.Identity.Pages.Account
             {
                 var user = new AppUser { UserName = Input.Email, Email = Input.Email};
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var result = await _userManager.CreateAsync(user, Input.Password) ;
 
                 var getThisUser = await _userManager.FindByIdAsync(user.Id);
                 if (getThisUser != null)

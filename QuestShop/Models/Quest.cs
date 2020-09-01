@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace QuestShop.Models {
+namespace QuestShop.Models
+{
     public class Quest : IItemThumbnail
     {
         public int Id { get; set; }
