@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<IItemThumbnail>
 
-<div style="text-align:center;">
+<div style="text-align:center; padding-bottom: 20px;">
     <div style="font-size: 3em;">Current Quests</div>
 </div>
 
@@ -11,8 +11,8 @@
         <div class="row" style="justify-content:center;">
             @foreach (var item in Model)
             {
-                <div>
-                    <div class="card" style="max-width: 50%; background-color: inherit;">
+                <div class="col-sm-4">
+                    <div class="card" style="max-width: 45%; background-color: inherit; margin:auto;">
                         <div class="img-wrapper">
                             <img class="card-img-top img-fluid>" src="~/img/quest_cards/test-card.png">
                             <div class="card-img-overlay">
