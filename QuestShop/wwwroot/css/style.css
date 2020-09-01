@@ -2672,12 +2672,12 @@ hero-btn {
         }
 
             .mobile_menu .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-                background-color: #f04e3c !important
+                background-color: #ffdc00 !important
             }
 
         .mobile_menu .slicknav_menu .slicknav_nav {
             margin-top: 16px !important;
-            box-shadow: 0 0 10px 3px rgba(141, 140, 140, 0.5)
+            box-shadow: 0 0 10px 3px #9100ff
         }
 
             .mobile_menu .slicknav_menu .slicknav_nav a:hover {

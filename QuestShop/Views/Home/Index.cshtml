@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Quest>
+﻿@model QuestProductViewModel
 
 @{
     ViewData["Title"] = "Quest Shop";
@@ -53,7 +53,14 @@
             </div>
         </div>
     </main>
-    <partial name="_ItemThumbnail" model="Model" />
+    <div style="text-align:center; padding-bottom: 20px;">
+        <div style="font-size: 3em;">Current Quests</div>
+    </div>
+    <partial name="_ItemThumbnail" model="Model.Quests" />
+    <div style="text-align:center; padding-bottom: 20px;">
+        <div style="font-size: 3em;">Rewards</div>
+    </div>
+    <partial name="_ItemThumbnail" model="Model.Products" />
 }
 
 

@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<IItemThumbnail>
 
-<div style="text-align:center; padding-bottom: 20px;">
-    <div style="font-size: 3em;">Current Quests</div>
-</div>
-
 <div style="box-sizing: content-box;">
     @for (int i = 0; i < (Model.Count() / 3); i++)
     {
@@ -22,13 +18,20 @@
                                 </div>
                             </div>
                         </div>
-                        <h5 class="card-text" style="text-align: center;">
-                            <a asp-controller="Home"
-                               asp-action="Index">
-                                Details
-                            </a>
-                        </h5>
+
                     </div>
+                    <h5 class="card-text" style="text-align: center;">
+                        <a asp-controller="Home"
+                           asp-action="Index">
+                            Details
+                        </a>
+                    </h5>
+                    <h5 class="card-text" style="text-align: center; color:yellow;">
+                        <a asp-controller="Home"
+                           asp-action="Index">
+                            Accept
+                        </a>
+                    </h5>
                 </div>
             }
         </div>

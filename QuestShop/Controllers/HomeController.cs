@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuestShop.Data;
 using QuestShop.Models;
+using QuestShop.ViewModels;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -26,8 +27,13 @@ namespace QuestShop.Controllers
 
         public async Task<IActionResult> Index() {
 
-            var quests = await _questRepository.GetAll();            
-            return View(quests);
+            var questsProducts = new QuestProductViewModel()
+            {
+                Quests = await _questRepository.GetAll(),
+                Products = await _productRepository.GetAll()
+            };
+            
+            return View(questsProducts);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
