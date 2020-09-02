@@ -13,16 +13,14 @@ namespace QuestShop.Controllers
         //private readonly ILogger<HomeController> _logger;
         private readonly ICrudRepository<Quest> _questRepository;
         private readonly ICrudRepository<Product> _productRepository;
-        private readonly QuestShopDbContext _questShopDbContext;
 
         public HomeController(//ILogger<HomeController> logger,
                             ICrudRepository<Quest> questRepository,
-                            ICrudRepository<Product> productRepository,
-                            QuestShopDbContext questShopDbContext) {
+                            ICrudRepository<Product> productRepository
+                           ) {
             //_logger = logger;
             _questRepository = questRepository;
             _productRepository = productRepository;
-            _questShopDbContext = questShopDbContext;
         }
 
         public async Task<IActionResult> Index() {
