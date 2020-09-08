@@ -51,7 +51,7 @@ namespace QuestShop.Models
         {
             _questShopDbContext = questShopDbContext;
             this.userManager = userManager;
-            _currentUserName = httpContextAccessor.HttpContext.User.Identity.Name; //Set current user guid to field
+            _currentUserName = httpContextAccessor.HttpContext.User.Identity.Name; //Set current user mail to field
         }
 
         private AppUser GetAppUser()
