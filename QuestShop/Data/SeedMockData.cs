@@ -63,7 +63,69 @@ namespace QuestShop.Data
                             CompletionDate = DateTime.Today,
                             Stock = false,
                             QuestOfTheWeek = false
-                        }
+                        },
+                         new Quest
+                         {
+                             Name = "Here's my two cents, my two cents are free",
+                             Details = "Contribute to an open-source project",
+                             Points = 150,
+                             CompletionDate = DateTime.Today,
+                             Stock = false,
+                             QuestOfTheWeek = false
+                         },
+                          new Quest
+                          {
+                              Name = "Here's my two cents, my two cents are free",
+                              Details = "Contribute to an open-source project",
+                              Points = 150,
+                              CompletionDate = DateTime.Today,
+                              Stock = false,
+                              QuestOfTheWeek = false
+                          },
+                           new Quest
+                           {
+                               Name = "Here's my two cents, my two cents are free",
+                               Details = "Contribute to an open-source project",
+                               Points = 150,
+                               CompletionDate = DateTime.Today,
+                               Stock = false,
+                               QuestOfTheWeek = false
+                           }, new Quest
+                           {
+                               Name = "Here's my two cents, my two cents are free",
+                               Details = "Contribute to an open-source project",
+                               Points = 150,
+                               CompletionDate = DateTime.Today,
+                               Stock = false,
+                               QuestOfTheWeek = false
+                           },
+                         new Quest
+                         {
+                             Name = "Here's my two cents, my two cents are free",
+                             Details = "Contribute to an open-source project",
+                             Points = 150,
+                             CompletionDate = DateTime.Today,
+                             Stock = false,
+                             QuestOfTheWeek = false
+                         },
+                          new Quest
+                          {
+                              Name = "Here's my two cents, my two cents are free",
+                              Details = "Contribute to an open-source project",
+                              Points = 150,
+                              CompletionDate = DateTime.Today,
+                              Stock = false,
+                              QuestOfTheWeek = false
+                          },
+                           new Quest
+                           {
+                               Name = "Here's my two cents, my two cents are free",
+                               Details = "Contribute to an open-source project",
+                               Points = 150,
+                               CompletionDate = DateTime.Today,
+                               Stock = false,
+                               QuestOfTheWeek = false
+                           }
                     );
                 context.SaveChanges();
             }

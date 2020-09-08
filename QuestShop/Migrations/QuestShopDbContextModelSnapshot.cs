@@ -24,9 +24,6 @@ namespace QuestShop.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -40,8 +37,6 @@ namespace QuestShop.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
@@ -361,13 +356,6 @@ namespace QuestShop.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UsersQuests");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.HasOne("QuestShop.Models.AppUser", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
