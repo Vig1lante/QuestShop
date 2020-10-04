@@ -32,12 +32,8 @@ namespace QuestShop.Controllers
         }
         public IActionResult Index()
         {
-
-
             return View(_userRepository.GetUsersWithRoles().Result);
         }
-
-
 
 
 
